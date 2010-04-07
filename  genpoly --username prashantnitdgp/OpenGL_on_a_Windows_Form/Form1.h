@@ -98,6 +98,7 @@ namespace OpenGL_on_a_Windows_Form {
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::Label^  label27;
 
 
 	public: 
@@ -156,6 +157,7 @@ namespace OpenGL_on_a_Windows_Form {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->label27 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// poly1
@@ -482,11 +484,21 @@ namespace OpenGL_on_a_Windows_Form {
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &Form1::button3_Click);
 			// 
+			// label27
+			// 
+			this->label27->AutoSize = true;
+			this->label27->Location = System::Drawing::Point(783, 75);
+			this->label27->Name = L"label27";
+			this->label27->Size = System::Drawing::Size(306, 13);
+			this->label27->TabIndex = 39;
+			this->label27->Text = L"Enter x-y co-ordinates for both polygons by clicking add button  ";
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1192, 513);
+			this->Controls->Add(this->label27);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
