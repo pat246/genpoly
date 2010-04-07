@@ -939,7 +939,6 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 				if(tempx != -1 && tempy!= -1)
 				bx.push_back(tempx/50.0), by.push_back(tempy/50.0);
 
-			 vector<double> union_setx, union_sety;
 			 double X,Y,Ax,Ay,Bx,By,Cx,Cy,Dx,Dy;
 			  float vertx[100], verty[100];
 			 for(int j=0;j<bx.size();j++)
@@ -948,9 +947,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 for(int i=0;i<ax.size();i++)
 					{			   
 					  double testx = ax[i], testy = ay[i];
-					  if(!pnpoly(bx.size(),vertx,verty,testx,testy))  
-						  union_setx.push_back(testx), union_sety.push_back(testy);  // union set is set of points from poly1 and poly2 which creates a union
-					  else
+					  if(pnpoly(bx.size(),vertx,verty,testx,testy))
 						  int_setx.push_back(testx),int_sety.push_back(testy);
 					}
 
@@ -960,9 +957,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 			 for(int i=0;i<bx.size();i++)
 					{			   
 					  double testx = bx[i], testy = by[i];
-					  if(!pnpoly(ax.size(),vertx,verty,testx,testy))
-						  union_setx.push_back(testx), union_sety.push_back(testy);
-					  else
+					  if(pnpoly(ax.size(),vertx,verty,testx,testy))
 						  int_setx.push_back(testx),int_sety.push_back(testy);
 					}
 
@@ -974,9 +969,7 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 						  Bx = ax[(i+1)%ax.size()] ;By = ay[(i+1)%ax.size()] ;
 						  Cx =bx[j]; Cy = by[j];
 						  Dx = bx[(j+1)%bx.size()]; Dy = by[(j+1)%bx.size()] ; 
-						  if(lineSegmentIntersection(Ax,Ay,Bx,By,Cx,Cy,Dx,Dy,&X,&Y))
-							/* cout<<"X="<<X<<"Y="<<Y<<endl,*/ union_setx.push_back(X), union_sety.push_back(Y);
-						  else
+						  if(!lineSegmentIntersection(Ax,Ay,Bx,By,Cx,Cy,Dx,Dy,&X,&Y))
 							  int_setx.push_back(X),int_sety.push_back(Y);
 				 }
 			
